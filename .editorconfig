@@ -1,0 +1,25 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+cpp_new_line_before_open_brace_namespace = same_line
+cpp_indent_namespace_contents = false
+
+[*.cpp]
+indent_style = space
+indent_size = 2
+continuation_indent_size = 4
+tab_width = 2
+max_line_length = 250
+
+[*.h]
+indent_style = space
+indent_size = 2
+continuation_indent_size = 4
+tab_width = 2
+max_line_length = 250
