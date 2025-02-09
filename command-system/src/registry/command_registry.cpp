@@ -1,4 +1,5 @@
 #include "command_registry.h"
+#include <QString>
 
 namespace Evoteam {
 
@@ -15,6 +16,8 @@ void CommandRegistry::execute_command(const std::string& name) {
   if (commands.find(name) != commands.end()) {
     commands[name]->execute();
   }
+
+  QString test;
 }
 
 }
