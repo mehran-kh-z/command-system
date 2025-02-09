@@ -3,16 +3,16 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-find_package(Qt6 COMPONENTS Core REQUIRED)
+find_package(Qt5 COMPONENTS Core REQUIRED)
 
 set(PROJECT_SOURCES
     src/registry/command_registry.cpp
 )
 
 # Add the library
-add_library(${PROJECT_NAME} SHARED ${PROJECT_SOURCES})
+add_library(${PROJECT_NAME} STATIC ${PROJECT_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core)
 target_compile_definitions(${PROJECT_NAME} PRIVATE COMMAND_SYSTEM_LIBRARY)
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:include src>
