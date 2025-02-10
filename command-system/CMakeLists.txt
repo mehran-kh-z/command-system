@@ -2,6 +2,7 @@
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(NAMESPACE evoteam)
 
 find_package(Qt5 COMPONENTS Core REQUIRED)
 
@@ -32,14 +33,14 @@ install(DIRECTORY include/ DESTINATION include)
 
 # Export the package for use from the build tree
 export(EXPORT CommandSystemTargets
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/CommandSystemTargets.cmake"
-    NAMESPACE ${PROJECT_NAME}::
+    FILE "${CMAKE_BINARY_DIR}/command-systemConfig.cmake"
+    NAMESPACE ${NAMESPACE}::
 )
 
 # Create a Config file for the package
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/CommandSystemConfigVersion.cmake"
+    "${CMAKE_BINARY_DIR}/command-systemConfigVersion.cmake"
     VERSION ${PROJECT_VERSION}
     COMPATIBILITY AnyNewerVersion
 )

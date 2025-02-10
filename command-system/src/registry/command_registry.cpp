@@ -13,11 +13,9 @@ void CommandRegistry::register_command(const std::string& name, std::shared_ptr<
 }
 
 void CommandRegistry::execute_command(const std::string& name) {
-  if (commands.find(name) != commands.end()) {
+  if (commands.contains(name)) {
     commands[name]->execute();
   }
-
-  QString test;
 }
 
 }
