@@ -5,6 +5,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(NAMESPACE evoteam)
 
 find_package(Qt5 COMPONENTS Core REQUIRED)
+find_package(common)
 
 set(PROJECT_SOURCES
     src/registry/command_registry.cpp
@@ -13,7 +14,10 @@ set(PROJECT_SOURCES
 # Add the library
 add_library(${PROJECT_NAME} SHARED ${PROJECT_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    Qt5::Core
+    evoteam::common
+)
 target_compile_definitions(${PROJECT_NAME} PRIVATE COMMAND_SYSTEM_LIBRARY)
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:include src>
