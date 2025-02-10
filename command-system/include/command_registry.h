@@ -4,8 +4,9 @@
 #include <memory>
 #include <command_interface.h>
 #include <command_system_global.h>
+#include "type_utils.h"
 
-namespace Evoteam {
+APP_NS
 
 class COMMAND_SYSTEM_EXPORT CommandRegistry {
 public:
@@ -19,4 +20,4 @@ private:
   std::unordered_map<std::string, std::shared_ptr<CommandInterface>> commands;
 };
 
-}
+APP_NS_END

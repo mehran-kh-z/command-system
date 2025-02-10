@@ -1,7 +1,7 @@
 #include "command_registry.h"
 #include <QString>
 
-namespace Evoteam {
+APP_NS
 
 CommandRegistry& CommandRegistry::instance() {
   static CommandRegistry instance;
@@ -18,4 +18,4 @@ void CommandRegistry::execute_command(const std::string& name) {
   }
 }
 
-}
+APP_NS_END

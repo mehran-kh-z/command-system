@@ -1,6 +1,7 @@
 #pragma once
+#include "type_utils.h"
 
-namespace Evoteam {
+APP_NS
 
 class CommandInterface {
 public:
@@ -8,4 +9,4 @@ public:
   virtual void execute() = 0;
 };
 
-} // namespace Evoteam
+APP_NS_END

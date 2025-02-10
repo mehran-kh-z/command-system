@@ -2,7 +2,9 @@
 #include <command_interface.h>
 #include <iostream>
 
-namespace Evoteam {
+#include "type_utils.h"
+
+APP_NS
 
 class PrintCommand : public CommandInterface {
 public:
@@ -11,4 +13,4 @@ public:
   }
 };
 
-} // namespace Evoteam
+APP_NS_END
