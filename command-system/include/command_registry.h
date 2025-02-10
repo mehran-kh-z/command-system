@@ -7,7 +7,7 @@
 
 namespace Evoteam {
 
-class COMMAND_SYSTEM_LIBRARY CommandRegistry {
+class COMMAND_SYSTEM_EXPORT CommandRegistry {
 public:
   static CommandRegistry& instance();
 
