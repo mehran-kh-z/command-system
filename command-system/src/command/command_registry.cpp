@@ -1,4 +1,4 @@
-#include "command_registry.h"
+#include <command/command_registry.h>
 #include <QString>
 
 APP_NS

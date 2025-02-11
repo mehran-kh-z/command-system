@@ -2,7 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include <memory>
-#include <command_interface.h>
+#include <command/command_interface.h>
 #include <command_system_global.h>
 #include <types/utils.h>
 
