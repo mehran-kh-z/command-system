@@ -27,13 +27,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 # Install rules
 install(TARGETS ${PROJECT_NAME}
     EXPORT CommandSystemTargets
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
     RUNTIME DESTINATION bin
-    INCLUDES DESTINATION include
+    COMPONENT Binaries
 )
-
-install(DIRECTORY include/ DESTINATION include)
 
 # Export the package for use from the build tree
 export(EXPORT CommandSystemTargets
