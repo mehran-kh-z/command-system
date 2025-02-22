@@ -1,2 +1,7 @@
-.vscode/
+.vs/
 out/
+**/vcpkg_installed/
+CMakeUserPresets.json
+CMakeFiles/
+.vscode/
+*.user
