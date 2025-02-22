@@ -1,4 +1,4 @@
-#include <command/command_registry.h>
+#include <command/command_registry.hpp>
 #include <QString>
 
 APP_NS namespace command {

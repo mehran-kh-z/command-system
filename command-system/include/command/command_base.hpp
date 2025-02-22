@@ -1,6 +1,6 @@
 #pragma once
-#include <contracts/command_interface.h>
-#include <command/command_info.h>
+#include <contracts/command/command_interface.hpp>
+#include <command/command_info.hpp>
 
 APP_NS namespace command {
 

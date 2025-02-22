@@ -1,7 +1,7 @@
 #pragma once
-#include <types/common.h>
-#include <contracts/command_info_interface.h>
-#include <command_system_global.h>
+#include <types/common.hpp>
+#include <contracts/command/command_info_interface.hpp>
+#include <command_system_global.hpp>
 
 APP_NS namespace command {
 
@@ -11,7 +11,7 @@ APP_NS namespace command {
 class COMMAND_SYSTEM_EXPORT CommandInterface {
 public:
   /**
-   * @brief info is the command information.
+   * @brief Info is the command information.
    */
   IPROP(CommandInfoInterface, info);
 
@@ -21,9 +21,14 @@ public:
   virtual ~CommandInterface() = default;
 
   /**
-   * @brief execute is the method that will be called to execute the command.
+   * @brief Execute is the method that will be called to execute the command.
    */
   virtual void execute() = 0;
+
+  /**
+   * @brief Undo is the method that will be called to undo the command.
+   */
+  virtual void undo() = 0;
 };
 
 } APP_NS_END

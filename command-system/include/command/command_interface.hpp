@@ -1,6 +1,6 @@
 #pragma once
-#include <types/utils.h>
-#include <command_system_global.h>
+#include <types/utils.hpp>
+#include <command_system_global.hpp>
 
 APP_NS
 

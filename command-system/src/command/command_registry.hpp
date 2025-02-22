@@ -1,7 +1,7 @@
 #pragma once
-#include <types/utils.h>
-#include <contracts/command_interface.h>
-#include <command_system_global.h>
+#include <types/utils.hpp>
+#include <command/command_interface.hpp>
+#include <command_system_global.hpp>
 #include <string>
 #include <unordered_map>
 #include <memory>

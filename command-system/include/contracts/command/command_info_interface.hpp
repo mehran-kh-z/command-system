@@ -1,5 +1,5 @@
 #pragma once
-#include <types/common.h>
+#include <types/common.hpp>
 
 APP_NS namespace command {
 

@@ -1,5 +1,5 @@
 #pragma once
-#include <command/common.h>
+#include <command/common.hpp>
 #include <iostream>
 
 APP_NS

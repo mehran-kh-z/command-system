@@ -1,7 +1,7 @@
 #pragma once
-#include <types/utils.h>
-#include <types/result.h>
-#include <contracts/application_interface.h>
+#include <types/utils.hpp>
+#include <types/result.hpp>
+#include <contracts/application_interface.hpp>
 
 APP_NS
 

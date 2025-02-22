@@ -1,5 +1,5 @@
 #pragma once
-#include <contracts/command_info_interface.h>
+#include <contracts/command/command_info_interface.hpp>
 
 APP_NS namespace command {
 
