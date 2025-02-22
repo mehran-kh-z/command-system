@@ -1,12 +1,10 @@
 #pragma once
-#include <command_interface.h>
+#include <command/common.h>
 #include <iostream>
-
-#include <types/utils.h>
 
 APP_NS
 
-class PrintCommand : public CommandInterface {
+class PrintCommand : public command::CommandBase {
 public:
   void execute() override {
     std::cout << "Executing print command." << std::endl;

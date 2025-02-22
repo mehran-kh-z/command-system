@@ -7,7 +7,7 @@ APP_NS
 
 class CommandBasedApplicationInterface : public ApplicationInterface {
 public:
-  Result<> register_command(const QString& command_name) = 0;
+  virtual Result<> register_command(const QString& command_name) = 0;
 };
 
 APP_NS_END

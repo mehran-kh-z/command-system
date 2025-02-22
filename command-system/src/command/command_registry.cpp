@@ -1,7 +1,7 @@
 #include <command/command_registry.h>
 #include <QString>
 
-APP_NS
+APP_NS namespace command {
 
 CommandRegistry& CommandRegistry::instance() {
   static CommandRegistry instance;
@@ -18,4 +18,4 @@ void CommandRegistry::execute_command(const std::string& name) {
   }
 }
 
-APP_NS_END
+} APP_NS_END
