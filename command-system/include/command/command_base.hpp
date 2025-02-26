@@ -1,12 +1,23 @@
 #pragma once
 #include <contracts/command/command_interface.hpp>
 #include <command/command_info.hpp>
+#include <command_system_global.hpp>
 
 APP_NS namespace command {
 
-class CommandBase : public CommandInterface {
+class COMMAND_SYSTEM_EXPORT CommandBase : public CommandInterface {
 public:
-  IPROP_IMPL(CommandInfoInterface, info, CommandInfo);
+  void execute() override {
+    
+  }
+
+  void undo() override {
+    
+  }
+
+  [[nodiscard]] bool canUndo() const override {
+    return false;
+  }
 };
 
 } APP_NS_END

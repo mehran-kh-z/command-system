@@ -1,21 +1,20 @@
 #include <command/command_registry.hpp>
-#include <QString>
 
 APP_NS namespace command {
 
-CommandRegistry& CommandRegistry::instance() {
-  static CommandRegistry instance;
-  return instance;
+CommandRegistry::CommandRegistry(std::string name) : name_(std::move(name)) {
 }
 
-void CommandRegistry::register_command(const std::string& name, std::shared_ptr<CommandInterface> command) {
-  commands[name] = std::move(command);
+void CommandRegistry::register_command(const CommandInstantiatorType& command_instantiator) {
+  auto& [info, instantiator] = command_instantiator;
+  commands_[info->name()] = command_instantiator;
 }
 
-void CommandRegistry::execute_command(const std::string& name) {
-  if (commands.contains(name)) {
-    commands[name]->execute();
+const CommandInstantiatorType* CommandRegistry::get_command(const std::string& name) {
+  if (commands_.contains(name)) {
+    return &commands_[name];
   }
+  return nullptr;
 }
 
 } APP_NS_END

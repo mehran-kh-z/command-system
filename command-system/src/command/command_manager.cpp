@@ -1,18 +1,35 @@
 #include <command/command_manager.hpp>
-#include "command_manager.hpp"
 
 APP_NS namespace command {
 
-CommandManager::CommandManager() {
+CommandManager::CommandManager(std::shared_ptr<log::LoggerInterface> logger) : logger_(std::move(logger)) {
+  logger_->error("Creating the default registry");
+  add_registry(std::make_unique<CommandRegistry>("default"));
 }
 
 void CommandManager::add_registry(std::unique_ptr<CommandRegistry> registry) {
-  registries.push_back(std::move(registry));
+  registries_.emplace(registry->name(), std::move(registry));
+}
+
+void CommandManager::register_command(const CommandInstantiatorType& command_instantiator, const std::string& registry_name) {
+  if (registries_.contains(registry_name)) {
+    registries_[registry_name]->register_command(command_instantiator);
+  }
+  else {
+    throw std::runtime_error("Registry not found: " + registry_name);
+  }
 }
 
 void CommandManager::execute_command(const std::string& name) {
-  for (auto& registry : registries) {
-    registry->execute_command(name);
+  for (auto& [_, registry] : registries_) {
+    auto instantiator_type = registry->get_command(name);
+    if (instantiator_type) {
+      auto& [info, instantiator] = *instantiator_type;
+      logger_->info("Executing command: " + info->name());
+
+      //todo: execute using command_invoker & RBAC checker
+      instantiator()->execute();
+    }
   }
 }
 

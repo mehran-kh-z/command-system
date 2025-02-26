@@ -8,7 +8,10 @@ find_package(Qt5 COMPONENTS Core REQUIRED)
 find_package(common)
 
 set(PROJECT_SOURCES
+    src/command/command_manager.cpp
+    src/command/command_history.cpp
     src/command/command_registry.cpp
+    src/command/command_info.cpp
 )
 
 # Add the library
