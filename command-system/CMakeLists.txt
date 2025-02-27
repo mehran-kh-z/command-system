@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-find_package(Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt6 COMPONENTS Core REQUIRED)
 find_package(common)
 
 set(PROJECT_SOURCES
@@ -18,7 +18,7 @@ set(PROJECT_SOURCES
 add_library(${PROJECT_NAME} SHARED ${PROJECT_SOURCES})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    Qt5::Core
+    Qt::Core
     evoteam::common
 )
 target_compile_definitions(${PROJECT_NAME} PRIVATE COMMAND_SYSTEM_LIBRARY)
