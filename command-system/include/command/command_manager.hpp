@@ -2,7 +2,7 @@
 #include <types/common.hpp>
 #include <contracts/log/logger_interface.hpp>
 #include <contracts/security/rbac_checker_interface.hpp>
-#include <service/service_locator.hpp>
+#include <services/service_locator.hpp>
 #include <command/command_registry.hpp>
 #include <command/command_history.hpp>
 #include <command/command_invoker.hpp>
