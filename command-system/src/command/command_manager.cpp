@@ -2,7 +2,8 @@
 
 APP_NS namespace command {
 
-CommandManager::CommandManager(std::shared_ptr<log::LoggerInterface> logger) : logger_(std::move(logger)) {
+CommandManager::CommandManager(const std::shared_ptr<security::RBACCheckerInterface>& rbca_checker, std::shared_ptr<log::LoggerInterface> logger)
+  : logger_(std::move(logger)), invoker_(rbca_checker) {
   logger_->error("Creating the default registry");
   add_registry(std::make_unique<CommandRegistry>("default"));
 }
@@ -21,16 +22,17 @@ void CommandManager::register_command(const CommandInstantiatorType& command_ins
 }
 
 void CommandManager::execute_command(const std::string& name) {
-  for (auto& [_, registry] : registries_) {
+  /*for (auto& [_, registry] : registries_) {
     auto instantiator_type = registry->get_command(name);
     if (instantiator_type) {
       auto& [info, instantiator] = *instantiator_type;
       logger_->info("Executing command: " + info->name());
 
       //todo: execute using command_invoker & RBAC checker
-      instantiator()->execute();
+      auto command = instantiator();
+      invoker_.execute_command(command, info);
     }
-  }
+  }*/
 }
 
 } APP_NS_END
