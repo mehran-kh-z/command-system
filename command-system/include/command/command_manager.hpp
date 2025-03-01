@@ -2,7 +2,7 @@
 #include <types/common.hpp>
 #include <contracts/log/logger_interface.hpp>
 #include <contracts/security/rbac_checker_interface.hpp>
-#include <services/service_locator.hpp>
+#include <service/service_locator.hpp>
 #include <command/command_registry.hpp>
 #include <command/command_history.hpp>
 #include <command/command_invoker.hpp>
@@ -24,7 +24,9 @@ public:
    * @param logger The logger to use. If not provided, the default logger is used.
    * @param rbca_checker The RBAC checker to use. If not provided, no security will be applied to commands.
    */
-  CommandManager(const std::shared_ptr<security::RBACCheckerInterface>& rbca_checker = nullptr, std::shared_ptr<log::LoggerInterface> logger = services::ServiceLocator::get_service<log::LoggerInterface>());
+  CommandManager(
+    const std::shared_ptr<security::RBACCheckerInterface>& rbca_checker = nullptr,
+    std::shared_ptr<log::LoggerInterface> logger = service::ServiceLocator::get_service<log::LoggerInterface>());
 
   /**
    * @brief Adds a registry to the manager.

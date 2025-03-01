@@ -6,9 +6,9 @@
 APP_NS namespace command {
 
 class CommandInfoInterface {
-public:
   IPROP(std::string, alias);
 
+public:
   virtual const std::string& name() = 0;
 
   virtual const security::PermissionListInterface& permissions() const = 0;

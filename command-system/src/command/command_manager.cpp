@@ -1,4 +1,5 @@
 #include <command/command_manager.hpp>
+#include <exception/common.hpp>
 
 APP_NS namespace command {
 
@@ -17,7 +18,7 @@ void CommandManager::register_command(const CommandInstantiatorType& command_ins
     registries_[registry_name]->register_command(command_instantiator);
   }
   else {
-    throw std::runtime_error("Registry not found: " + registry_name);
+    throw exception::RegistryNotFoundException(registry_name);
   }
 }
 
