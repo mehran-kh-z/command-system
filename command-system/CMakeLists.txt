@@ -4,7 +4,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Qt6 COMPONENTS Core REQUIRED)
-find_package(common)
 
 set(PROJECT_SOURCES
     src/command/command_manager.cpp
@@ -16,16 +15,22 @@ set(PROJECT_SOURCES
 
 # Add the library
 add_library(${PROJECT_NAME} SHARED ${PROJECT_SOURCES})
+add_library(${COMPANY_NAMESPACE}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
+target_include_directories(${PROJECT_NAME}
+  PRIVATE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+    $<INSTALL_INTERFACE:src>
+
+  PUBLIC
+    $<BUILD_INTERFACE:include ${SPDLOG_INCLUDE_DIRS}>
+    $<INSTALL_INTERFACE:include ${SPDLOG_INCLUDE_DIRS}>
+)
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt::Core
-    evoteam::common
+    ${COMPANY_NAMESPACE}::common
 )
 target_compile_definitions(${PROJECT_NAME} PRIVATE COMMAND_SYSTEM_LIBRARY)
-target_include_directories(${PROJECT_NAME} PUBLIC
-    $<BUILD_INTERFACE:include src>
-    $<INSTALL_INTERFACE:include src>
-)
 
 # Install rules
 install(TARGETS ${PROJECT_NAME}
